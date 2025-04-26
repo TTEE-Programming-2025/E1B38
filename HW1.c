@@ -48,7 +48,7 @@ int main() {
         }
         
         
-        printf("按任意鍵結束...\n");
+        printf("按任意鍵結束\n");
         getchar();
         getchar();
     } else {
