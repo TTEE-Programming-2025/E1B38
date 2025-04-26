@@ -8,7 +8,13 @@ void clearScreen() {
     system("cls"); // 清除螢幕，適用於 Windows
 }
 
+void pauseScreen() {
+    printf("\nPress any key to continue...\n");
+    getch();
+}
+
 void drawTriangle(char ch) {
+    printf("\n輸出結果：\n");
     for (char i = 'a'; i <= ch; i++) {
         for (char j = 'a'; j <= i; j++) {
             printf("%c", j);
@@ -29,7 +35,7 @@ void multiplicationTable(int n) {
 
 int main() {
     int inputPassword, tryCount = 0;
-    char choice;
+    char choice, ch;
 
     // 步驟1：登入驗證
     while (1) {
@@ -38,7 +44,7 @@ int main() {
 
         if (inputPassword == PASSWORD) {
             printf("密碼正確，歡迎使用！\n");
-            system("pause");
+            pauseScreen();
             break;
         } else {
             tryCount++;
@@ -47,6 +53,8 @@ int main() {
                 printf("錯誤超過3次，程式結束。\n");
                 return 0;
             }
+            pauseScreen();
+            clearScreen();
         }
     }
 
@@ -64,24 +72,18 @@ int main() {
         printf("%c\n", choice);
 
         if (choice == 'a' || choice == 'A') {
-            // 畫三角形
             clearScreen();
-            char ch;
             printf("請輸入一個字元 (a~n)：");
             scanf(" %c", &ch);
 
             if (ch >= 'a' && ch <= 'n') {
-                printf("\n輸出結果：\n");
                 drawTriangle(ch);
-                printf("\n按任意鍵返回主選單...\n");
-                getch();
             } else {
                 printf("輸入錯誤！請輸入小寫英文字母 a~n。\n");
-                system("pause");
             }
+            pauseScreen();
 
         } else if (choice == 'b' || choice == 'B') {
-            // 顯示乘法表
             clearScreen();
             int n;
             printf("請輸入一個1到9的整數：");
@@ -89,19 +91,15 @@ int main() {
 
             if (n >= 1 && n <= 9) {
                 multiplicationTable(n);
-                printf("\n按任意鍵返回主選單...\n");
-                getch();
             } else {
                 printf("輸入錯誤！請輸入1~9之間的整數。\n");
-                system("pause");
             }
+            pauseScreen();
 
         } else if (choice == 'c' || choice == 'C') {
-            // 結束程式確認
             clearScreen();
-            char yn;
             printf("確定要結束嗎？(y/n)：");
-            yn = getch();
+            char yn = getch();
             printf("%c\n", yn);
 
             if (yn == 'y' || yn == 'Y') {
@@ -111,16 +109,18 @@ int main() {
                 continue;
             } else {
                 printf("輸入錯誤！請重新選擇。\n");
-                system("pause");
+                pauseScreen();
             }
+
         } else {
             printf("輸入錯誤！請選擇 a, b, 或 c。\n");
-            system("pause");
+            pauseScreen();
         }
     } while (1);
 
     return 0;
 }
+
 HW2.cpp 程式感想：
 
 這次練習了密碼驗證與主選單設計，
