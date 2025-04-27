@@ -61,14 +61,14 @@ int main() {
     // 步驟2：主選單
     do {
         clearScreen();
-        printf("\n======= 主選單 =======\n");
+        printf("\歡迎來到E1B38的程式設計作業\n");
         printf("a. 畫出直角三角形\n");
         printf("b. 顯示乘法表\n");
         printf("c. 結束程式\n");
-        printf("======================\n");
-        printf("請選擇 (a/b/c)：");
+        printf("歡迎選擇喜歡的\n");
+        printf(" a 或 b 或 c：");
 
-        choice = getch(); // 不需按 Enter
+        choice = getch(); 
         printf("%c\n", choice);
 
         if (choice == 'a' || choice == 'A') {
@@ -120,6 +120,7 @@ int main() {
 
     return 0;
 }
+
 第二次作業
  
 HW2.cpp 程式感想：
@@ -130,5 +131,4 @@ HW2.cpp 程式感想：
 讓程式結構更清楚。過程中遇到 Git editor 問題，
 也順利解決，增加了對開發環境設定的理解。
 這次練習讓我對寫完整小應用程式更有信心！
-
 
