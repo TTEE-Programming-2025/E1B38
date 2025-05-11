@@ -7,6 +7,7 @@
 
 char seats[SIZE][SIZE];
 
+// Function declarations
 void showMainMenu();
 void generateSeats();
 void displaySeats();
@@ -16,8 +17,9 @@ int main() {
     int attempts = 0;
     char choice;
 
-    srand(time(NULL));
+    srand(time(NULL)); // Set random seed
 
+    // Welcome screen (20+ lines)
     printf("*********************\n");
     printf("*   WELCOME USER    *\n");
     printf("* I AM  E1B  38     *\n");
@@ -41,6 +43,7 @@ int main() {
     printf("*                   *\n");
     printf("*********************\n");
 
+    // Password check (max 3 attempts)
     while (attempts < 3) {
         printf("Enter password: ");
         scanf("%s", password);
@@ -59,20 +62,21 @@ int main() {
         return 0;
     }
 
-    generateSeats();
+    generateSeats(); // Initialize seat data
 
+    // Main menu loop
     while (1) {
         showMainMenu();
         printf("Select an option: ");
         scanf(" %c", &choice);
 
         if (choice == 'a') {
-            displaySeats();
+            displaySeats(); // Show current seat map
             printf("Press any key to return to menu...\n");
             getchar();
             getchar();
         } else if (choice == 'd') {
-            break;
+            break; // Exit
         } else {
             printf("Other options not implemented yet.\n");
         }
@@ -81,6 +85,7 @@ int main() {
     return 0;
 }
 
+// Print menu options
 void showMainMenu() {
     printf("\n");
     printf("----------[Booking System]----------\n");
@@ -91,6 +96,7 @@ void showMainMenu() {
     printf("------------------------------------\n");
 }
 
+// Fill seat map with '-' and randomly mark 10 '*' booked seats
 void generateSeats() {
     int i, row, col, count = 0;
     for (i = 0; i < SIZE; i++)
@@ -107,6 +113,7 @@ void generateSeats() {
     }
 }
 
+// Display the seat map with coordinates
 void displaySeats() {
     int i, j;
     printf(" \\123456789\n");
