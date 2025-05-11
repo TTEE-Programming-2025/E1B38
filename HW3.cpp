@@ -235,5 +235,26 @@ int main() {
 
     return 0;
 }
+//Program Description
+
+//This program uses a clear and interactive text-based menu to guide users.
+//Each option (a, b, c, d) is labeled with descriptive instructions.
+//Option a displays the full seat layout.
+//Option b automatically finds seats for the user.
+//Option c allows the user to manually select seats.
+//Option d exits the system, with a confirmation step (y/n).
+//prompts are simple, and all seat confirmations require user input to ensure clarity and avoid mistakes.
+
+
+
+//Programming Reflection 
+
+//Through this project, I learned how to use arrays, loops, conditionals, 
+//and string handling to build an interactive seat booking system.
+//One challenge was checking for valid and continuous seats and handling user input formats like "2-3 3-4".
+//I also practiced modular thinking by organizing code for different menu options and user decisions.
+//The final result feels like a real system and improved both my C language skills and logical thinking.
+
+
 
 
