@@ -7,17 +7,17 @@
 
 char seats[SIZE][SIZE];
 
-// Function declarations
 void showMainMenu();
 void generateSeats();
 void displaySeats();
+void arrangeSeats();
 
 int main() {
     char password[10];
     int attempts = 0;
     char choice;
 
-    srand(time(NULL)); // Set random seed
+    srand(time(NULL));
 
     // Welcome screen (20+ lines)
     printf("*********************\n");
@@ -43,7 +43,7 @@ int main() {
     printf("*                   *\n");
     printf("*********************\n");
 
-    // Password check (max 3 attempts)
+    // Password check
     while (attempts < 3) {
         printf("Enter password: ");
         scanf("%s", password);
@@ -62,7 +62,7 @@ int main() {
         return 0;
     }
 
-    generateSeats(); // Initialize seat data
+    generateSeats();
 
     // Main menu loop
     while (1) {
@@ -71,12 +71,14 @@ int main() {
         scanf(" %c", &choice);
 
         if (choice == 'a') {
-            displaySeats(); // Show current seat map
+            displaySeats();
             printf("Press any key to return to menu...\n");
             getchar();
             getchar();
+        } else if (choice == 'b') {
+            arrangeSeats();
         } else if (choice == 'd') {
-            break; // Exit
+            break;
         } else {
             printf("Other options not implemented yet.\n");
         }
@@ -85,7 +87,7 @@ int main() {
     return 0;
 }
 
-// Print menu options
+// Show menu
 void showMainMenu() {
     printf("\n");
     printf("----------[Booking System]----------\n");
@@ -96,7 +98,7 @@ void showMainMenu() {
     printf("------------------------------------\n");
 }
 
-// Fill seat map with '-' and randomly mark 10 '*' booked seats
+// Initialize seats and randomly mark 10 as booked (*)
 void generateSeats() {
     int i, row, col, count = 0;
     for (i = 0; i < SIZE; i++)
@@ -113,7 +115,7 @@ void generateSeats() {
     }
 }
 
-// Display the seat map with coordinates
+// Show current seat layout
 void displaySeats() {
     int i, j;
     printf(" \\123456789\n");
@@ -125,4 +127,61 @@ void displaySeats() {
         printf("\n");
     }
 }
+
+// Auto arrange seats for user
+void arrangeSeats() {
+    int n, found = 0;
+    printf("How many seats do you need (1~4)? ");
+    scanf("%d", &n);
+
+    if (n < 1 || n > 4) {
+        printf("Invalid number.\n");
+        return;
+    }
+
+    for (int i = SIZE - 1; i >= 0 && !found; i--) {
+        for (int j = 0; j <= SIZE - n; j++) {
+            int ok = 1;
+            for (int k = 0; k < n; k++) {
+                if (seats[i][j + k] != '-') {
+                    ok = 0;
+                    break;
+                }
+            }
+            if (ok) {
+                for (int k = 0; k < n; k++) {
+                    seats[i][j + k] = '@';
+                }
+                found = 1;
+                break;
+            }
+        }
+    }
+
+    if (!found) {
+        printf("Sorry, no suitable seats found.\n");
+        return;
+    }
+
+    displaySeats();
+
+    char confirm;
+    printf("Do you accept these seats? (y/n): ");
+    scanf(" %c", &confirm);
+
+    if (confirm == 'y') {
+        for (int i = 0; i < SIZE; i++)
+            for (int j = 0; j < SIZE; j++)
+                if (seats[i][j] == '@')
+                    seats[i][j] = '*';
+        printf("Seats confirmed.\n");
+    } else {
+        for (int i = 0; i < SIZE; i++)
+            for (int j = 0; j < SIZE; j++)
+                if (seats[i][j] == '@')
+                    seats[i][j] = '-';
+        printf("Cancelled.\n");
+    }
+}
+
 
