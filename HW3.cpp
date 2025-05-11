@@ -12,9 +12,9 @@ int main() {
     int attempts = 0;
     char choice;
 
-    srand(time(NULL));
+    srand(time(NULL)); // seed for random
 
-    // Welcome screen (20+ lines)
+    // Personal welcome screen (at least 20 lines)
     printf("*********************\n");
     printf("*   WELCOME USER    *\n");
     printf("* I AM  E1B  38     *\n");
@@ -38,6 +38,7 @@ int main() {
     printf("*                   *\n");
     printf("*********************\n");
 
+    // Password verification
     while (attempts < 3) {
         printf("Enter password: ");
         scanf("%s", password);
@@ -61,7 +62,7 @@ int main() {
         for (int j = 0; j < SIZE; j++)
             seats[i][j] = '-';
 
-    // Randomly mark 10 booked seats
+    // Randomly reserve 10 seats
     int count = 0;
     while (count < 10) {
         int row = rand() % SIZE;
@@ -72,7 +73,7 @@ int main() {
         }
     }
 
-    // Main menu loop
+    // Main menu
     while (1) {
         printf("\n");
         printf("----------[Booking System]----------\n");
@@ -86,6 +87,7 @@ int main() {
         scanf(" %c", &choice);
 
         if (choice == 'a') {
+            // Option a: show seat layout
             printf(" \\123456789\n");
             for (int i = SIZE - 1; i >= 0; i--) {
                 printf("%d ", i + 1);
@@ -98,6 +100,7 @@ int main() {
             getchar();
             getchar();
         } else if (choice == 'b') {
+            // Option b: auto arrange seats
             int n, found = 0;
             printf("How many seats do you need (1~4)? ");
             scanf("%d", &n);
@@ -107,6 +110,7 @@ int main() {
                 continue;
             }
 
+            // Find n continuous available seats in a row
             for (int i = SIZE - 1; i >= 0 && !found; i--) {
                 for (int j = 0; j <= SIZE - n; j++) {
                     int ok = 1;
@@ -131,6 +135,7 @@ int main() {
                 continue;
             }
 
+            // Show suggestion
             printf(" \\123456789\n");
             for (int i = SIZE - 1; i >= 0; i--) {
                 printf("%d ", i + 1);
@@ -145,12 +150,14 @@ int main() {
             scanf(" %c", &confirm);
 
             if (confirm == 'y') {
+                // Confirm ¡÷ @ becomes *
                 for (int i = 0; i < SIZE; i++)
                     for (int j = 0; j < SIZE; j++)
                         if (seats[i][j] == '@')
                             seats[i][j] = '*';
                 printf("Seats confirmed.\n");
             } else {
+                // Cancel ¡÷ @ becomes -
                 for (int i = 0; i < SIZE; i++)
                     for (int j = 0; j < SIZE; j++)
                         if (seats[i][j] == '@')
@@ -158,10 +165,12 @@ int main() {
                 printf("Cancelled.\n");
             }
         } else if (choice == 'c') {
+            // Option c: manual seat selection
             char input[100];
             int row, col;
             int valid = 1;
 
+            // Clear previous @ marks
             for (int i = 0; i < SIZE; i++)
                 for (int j = 0; j < SIZE; j++)
                     if (seats[i][j] == '@')
@@ -190,6 +199,7 @@ int main() {
                 continue;
             }
 
+            // Show seat result
             printf(" \\123456789\n");
             for (int i = SIZE - 1; i >= 0; i--) {
                 printf("%d ", i + 1);
@@ -209,6 +219,7 @@ int main() {
 
             printf("Your seats are confirmed.\n");
         } else if (choice == 'd') {
+            // Option d: exit
             break;
         } else {
             printf("Invalid option.\n");
@@ -217,7 +228,6 @@ int main() {
 
     return 0;
 }
-
 
 
 
