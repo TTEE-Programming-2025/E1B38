@@ -110,7 +110,6 @@ int main() {
                 continue;
             }
 
-            // Find n continuous available seats in a row
             for (int i = SIZE - 1; i >= 0 && !found; i--) {
                 for (int j = 0; j <= SIZE - n; j++) {
                     int ok = 1;
@@ -135,7 +134,6 @@ int main() {
                 continue;
             }
 
-            // Show suggestion
             printf(" \\123456789\n");
             for (int i = SIZE - 1; i >= 0; i--) {
                 printf("%d ", i + 1);
@@ -149,15 +147,13 @@ int main() {
             printf("Do you accept these seats? (y/n): ");
             scanf(" %c", &confirm);
 
-            if (confirm == 'y') {
-                // Confirm ¡÷ @ becomes *
+            if (confirm == 'y' || confirm == 'Y') {
                 for (int i = 0; i < SIZE; i++)
                     for (int j = 0; j < SIZE; j++)
                         if (seats[i][j] == '@')
                             seats[i][j] = '*';
                 printf("Seats confirmed.\n");
             } else {
-                // Cancel ¡÷ @ becomes -
                 for (int i = 0; i < SIZE; i++)
                     for (int j = 0; j < SIZE; j++)
                         if (seats[i][j] == '@')
@@ -170,7 +166,6 @@ int main() {
             int row, col;
             int valid = 1;
 
-            // Clear previous @ marks
             for (int i = 0; i < SIZE; i++)
                 for (int j = 0; j < SIZE; j++)
                     if (seats[i][j] == '@')
@@ -199,7 +194,6 @@ int main() {
                 continue;
             }
 
-            // Show seat result
             printf(" \\123456789\n");
             for (int i = SIZE - 1; i >= 0; i--) {
                 printf("%d ", i + 1);
@@ -219,8 +213,21 @@ int main() {
 
             printf("Your seats are confirmed.\n");
         } else if (choice == 'd') {
-            // Option d: exit
-            break;
+            // Option d: exit with confirmation
+            char confirm;
+            while (1) {
+                printf("Continue? (y/n): ");
+                scanf(" %c", &confirm);
+
+                if (confirm == 'y' || confirm == 'Y') {
+                    break; // back to main menu
+                } else if (confirm == 'n' || confirm == 'N') {
+                    printf("Goodbye!\n");
+                    return 0; // exit program
+                } else {
+                    printf("Invalid input. Please enter y or n.\n");
+                }
+            }
         } else {
             printf("Invalid option.\n");
         }
@@ -228,6 +235,5 @@ int main() {
 
     return 0;
 }
-
 
 
