@@ -23,11 +23,11 @@ void displayWelcomeScreen() {
     printf("=        歡迎                             =\n");
     printf("=        歡迎                             =\n");
     printf("=        歡迎                             =\n");
-    printf("=       需輸入密碼進入系統                =\n");
+    printf("=        需輸入密碼進入系統               =\n");
     printf("=                                         =\n");
-    printf("=     密碼提示4個字                       =\n");
+    printf("=        密碼提示4個字                    =\n");
     printf("=                                         =\n");
-    printf("=     每次執行最多嘗試三次                =\n");
+    printf("=        每次執行最多嘗試三次             =\n");
     printf("=                                         =\n");
     printf("===========================================\n\n");
 }
