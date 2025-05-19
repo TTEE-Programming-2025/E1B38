@@ -6,30 +6,30 @@
 #define MAX_TRIES 3
 
 void displayWelcomeScreen() {
-    // 顯示個人風格畫面（至少20行）
-    printf("===========================================\n");
-    printf("=                                         =\n");
-    printf("=         歡迎使用簡易成績系統            =\n");
-    printf("=                                         =\n");
-    printf("=         E1B 38 謝侑倫                   =\n");
-    printf("=                                         =\n");
-    printf("=                                         =\n");
-    printf("=        歡迎                             =\n");
-    printf("=        歡迎                             =\n");
-    printf("=        歡迎                             =\n");
-    printf("=        歡迎                             =\n");
-	printf("=        歡迎                             =\n");
-    printf("=        歡迎                             =\n");
-    printf("=        歡迎                             =\n");
-    printf("=        歡迎                             =\n");
-    printf("=        歡迎                             =\n");
-    printf("=        需輸入密碼進入系統               =\n");
-    printf("=                                         =\n");
-    printf("=        密碼提示4個字                    =\n");
-    printf("=                                         =\n");
-    printf("=        每次執行最多嘗試三次             =\n");
-    printf("=                                         =\n");
-    printf("===========================================\n\n");
+// 顯示個人風格畫面（至少20行）
+printf("===========================================\n");
+printf("=                                         =\n");
+printf("=         歡迎使用簡易成績系統            =\n");
+printf("=                                         =\n");
+printf("=         E1B 38 謝侑倫                   =\n");
+printf("=                                         =\n");
+printf("=                                         =\n");
+printf("=     需輸入密碼進入系統                  =\n");             
+printf("=                                         =\n");
+printf("=                                         =\n");
+printf("=         密碼提示：4 個字                =\n");
+printf("=         每次執行最多可嘗試三次          =\n");
+printf("=                                         =\n");
+printf("=         請輸入正確密碼以繼續…           =\n");
+printf("=                                         =\n");
+printf("=                                         =\n");
+printf("=         請勿將密碼洩漏給他人            =\n");
+printf("=                                         =\n");
+printf("=         製作人：謝侑倫                  =\n");
+printf("=         日期：2025年5月                 =\n");
+printf("=                                         =\n");
+printf("===========================================\n\n");
+
 }
 
 int login() {
