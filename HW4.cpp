@@ -99,8 +99,8 @@ void mainMenu() {
                 break;
         }
         printf("\n按任意鍵繼續...");
-        getchar(); // 吃掉換行
-        getchar(); // 等待任意鍵
+        getchar(); 
+        getchar(); 
     }
 }
 
