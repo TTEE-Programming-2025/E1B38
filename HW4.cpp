@@ -5,12 +5,17 @@
 #define MAX_TRIES 3
 
 typedef struct {
-    char name[50],int id,int math;
-    int physics,int english,float average;
+    char name[50];
+    int id;
+    int math;
+    int physics;
+    int english;
+    float average;
 } Student;
 
 Student students[MAX_STUDENTS];
 int studentCount = 0;
+
 void clearScreen() {
     #ifdef _WIN32
         system("cls");
@@ -111,14 +116,55 @@ void mainMenu() {
     }
 }
 
-int main() {
-    displayWelcomeScreen();
+// a. 輸入學生成績
+void enterGrades() {
+    clearScreen();
 
-    if (!login()) {
-        return 0;
+    printf("請輸入學生人數（5~10）：");
+    scanf("%d", &studentCount);
+    while (studentCount < 5 || studentCount > 10) {
+        printf("錯誤！請重新輸入學生人數（5~10）：");
+        scanf("%d", &studentCount);
     }
 
-    mainMenu();
-    return 0;
+    for (int i = 0; i < studentCount; i++) {
+        printf("\n-- 第 %d 位學生 --\n", i + 1);
+
+        printf("姓名：");
+        scanf("%s", students[i].name);
+
+        printf("學號（6位整數）：");
+        scanf("%d", &students[i].id);
+        while (students[i].id < 100000 || students[i].id > 999999) {
+            printf("錯誤！請重新輸入6位整數學號：");
+            scanf("%d", &students[i].id);
+        }
+
+        printf("數學成績（0~100）：");
+        scanf("%d", &students[i].math);
+        while (students[i].math < 0 || students[i].math > 100) {
+            printf("錯誤！請重新輸入數學成績（0~100）：");
+            scanf("%d", &students[i].math);
+        }
+
+        printf("物理成績（0~100）：");
+        scanf("%d", &students[i].physics);
+        while (students[i].physics < 0 || students[i].physics > 100) {
+            printf("錯誤！請重新輸入物理成績（0~100）：");
+            scanf("%d", &students[i].physics);
+        }
+
+        printf("英文成績（0~100）：");
+        scanf("%d", &students[i].english);
+        while (students[i].english < 0 || students[i].english > 100) {
+            printf("錯誤！請重新輸入英文成績（0~100）：");
+            scanf("%d", &students[i].english);
+        }
+
+        students[i].average = (students[i].math + students[i].physics + students[i].english) / 3.0f;
+    }
+
+    printf("\n資料輸入完畢。按任意鍵回主選單...");
+    getchar(); getchar();
 }
 
