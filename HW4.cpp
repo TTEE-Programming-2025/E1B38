@@ -4,6 +4,13 @@
 #define PASSWORD 2025
 #define MAX_TRIES 3
 
+typedef struct {
+    char name[50],int id,int math;
+    int physics,int english,float average;
+} Student;
+
+Student students[MAX_STUDENTS];
+int studentCount = 0;
 void clearScreen() {
     #ifdef _WIN32
         system("cls");
