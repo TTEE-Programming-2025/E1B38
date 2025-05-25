@@ -211,6 +211,65 @@ void rankGrades() {
 
 
 
+// 顯示主選單
+void showMenu() {
+    printf("------------[Grade System]----------\n");
+    printf("|  a. Enter student grades        |\n");
+    printf("|  b. Display student grades      |\n");
+    printf("|  c. Search for student grades   |\n");
+    printf("|  d. Grade ranking               |\n");
+    printf("|  e. Exit system                 |\n");
+    printf("------------------------------------\n");
+    printf("請輸入選項 (a ~ e)：");
+}
+
+// 主程式
+int main() {
+    displayWelcomeScreen();
+
+    if (!login())
+        return 0;
+
+    char choice;
+    while (1) {
+        clearScreen();
+        showMenu();
+        scanf(" %c", &choice);
+
+        switch (choice) {
+            case 'a':
+                enterGrades();
+                break;
+            case 'b':
+                displayGrades();
+                break;
+            case 'c':
+                searchGrades();
+                break;
+            case 'd':
+                rankGrades();
+                break;
+            case 'e': {
+                char confirm;
+                printf("確定離開？ (y/n)：");
+                scanf(" %c", &confirm);
+                if (confirm == 'y' || confirm == 'Y') {
+                    printf("系統結束，感謝使用！\n");
+                    return 0;
+                }
+                break;
+            }
+            default:
+                printf("無效選項，請重新輸入！\n");
+                getchar(); getchar();
+        }
+    }
+
+    return 0;
+}
+
+
+
 
 
 
