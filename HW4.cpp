@@ -181,6 +181,38 @@ void searchGrades() {
     printf("\n按任意鍵返回主選單...");
     getchar(); getchar();
 }
+// d. 成績排名
+void rankGrades() {
+    clearScreen();
+
+    if (studentCount == 0) {
+        printf("目前沒有學生資料可排序！\n");
+    } else {
+        Student temp;
+        for (int i = 0; i < studentCount - 1; i++) {
+            for (int j = 0; j < studentCount - i - 1; j++) {
+                if (students[j].average < students[j + 1].average) {
+                    temp = students[j];
+                    students[j] = students[j + 1];
+                    students[j + 1] = temp;
+                }
+            }
+        }
+
+        printf("學生姓名\t學號\t\t平均成績\n");
+        for (int i = 0; i < studentCount; i++) {
+            printf("%s\t\t%d\t%.1f\n", students[i].name, students[i].id, students[i].average);
+        }
+    }
+
+    printf("\n按任意鍵回主選單...");
+    getchar(); getchar();
+}
+
+
+
+
+
 
 
 
