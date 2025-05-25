@@ -185,3 +185,71 @@ void displayGrades() {
     printf("\n按任意鍵回主選單...");
     getchar(); getchar();
 }
+void searchGrades() {
+    clearScreen();
+
+    if (studentCount == 0) {
+        printf("目前沒有學生資料可搜尋！\n");
+    } else {
+        char searchName[50];
+        int found = 0;
+
+        printf("請輸入要搜尋的學生姓名：");
+        scanf("%s", searchName);
+
+        for (int i = 0; i < studentCount; i++) {
+            if (strcmp(students[i].name, searchName) == 0) {
+                printf("\n找到學生資料：\n");
+                printf("姓名：%s\n", students[i].name);
+                printf("學號：%d\n", students[i].id);
+                printf("數學：%d\n", students[i].math);
+                printf("物理：%d\n", students[i].physics);
+                printf("英文：%d\n", students[i].english);
+                printf("平均：%.1f\n", students[i].average);
+                found = 1;
+                break;
+            }
+        }
+
+        if (!found) {
+            printf("\n查無此學生資料。\n");
+        }
+    }
+
+    printf("\n按任意鍵返回主選單...");
+    getchar(); getchar();
+}
+void searchGrades() {
+    clearScreen();
+
+    if (studentCount == 0) {
+        printf("目前沒有學生資料可搜尋！\n");
+    } else {
+        char searchName[50];
+        int found = 0;
+
+        printf("請輸入要搜尋的學生姓名：");
+        scanf("%s", searchName);
+
+        for (int i = 0; i < studentCount; i++) {
+            if (strcmp(students[i].name, searchName) == 0) {
+                printf("\n找到學生資料：\n");
+                printf("姓名：%s\n", students[i].name);
+                printf("學號：%d\n", students[i].id);
+                printf("數學：%d\n", students[i].math);
+                printf("物理：%d\n", students[i].physics);
+                printf("英文：%d\n", students[i].english);
+                printf("平均：%.1f\n", students[i].average);
+                found = 1;
+                break;
+            }
+        }
+
+        if (!found) {
+            printf("\n查無此學生資料。\n");
+        }
+    }
+
+    printf("\n按任意鍵返回主選單...");
+    getchar(); getchar();
+}
