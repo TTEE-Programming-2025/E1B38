@@ -133,7 +133,7 @@ void displayGrades() {
     if (studentCount == 0) {
         printf("目前沒有學生資料！\n");
     } else {
-        printf("學生姓名\t學號\t\t數學\t物理\t英文\t平均\n");
+        printf("學生姓名\t學號\t數學\t物理\t英文\t平均\n");
         for (int i = 0; i < studentCount; i++) {
             printf("%s\t\t%d\t%d\t%d\t%d\t%.1f\n",
                    students[i].name, students[i].id,
@@ -199,7 +199,7 @@ void rankGrades() {
             }
         }
 
-        printf("學生姓名\t學號\t\t平均成績\n");
+        printf("學生姓名\t學號\t平均成績\n");
         for (int i = 0; i < studentCount; i++) {
             printf("%s\t\t%d\t%.1f\n", students[i].name, students[i].id, students[i].average);
         }
